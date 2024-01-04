@@ -1,0 +1,19 @@
+import { FastifyReply, FastifyRequest } from 'fastify'
+import { z } from 'zod'
+import { makeValidateCheckInService } from '@/services/factories/make-validate-check-in-service'
+
+export async function validate(req: FastifyRequest, res: FastifyReply) {
+    const validateChechInParamsSchema = z.object({
+        checkInId: z.string().uuid(),
+    })
+
+    const { checkInId } = validateChechInParamsSchema.parse(req.params)
+
+    const validateCheckInService = makeValidateCheckInService()
+
+    await validateCheckInService.execute({
+        checkInId
+    })
+
+    return res.status(204).send()
+}

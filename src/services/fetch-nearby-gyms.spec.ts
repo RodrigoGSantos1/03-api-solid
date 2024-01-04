@@ -24,7 +24,7 @@ describe('Fetch Nearby Gyms Service', () => {
       title: 'Far Gym',
       description: null,
       phone: null,
-      latitude: -24.3313393,
+      latitude: -30.3313393,
       longitude: -54.9733082,
     })
 
